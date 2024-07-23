@@ -15,6 +15,8 @@ def extract_data_from_news_site():
 
     search_query = "Football"
 
+    category = "Newsletter"
+
     number_of_months = 6
 
     number_of_months = 0 if number_of_months in [0, 1] else number_of_months - 1
@@ -35,6 +37,6 @@ def extract_data_from_news_site():
 
     image_downloader = ImageDownloader(image_output_dir)
 
-    automation = ExtractNews(url, image_downloader, csv_writer, timestamp_to_stop)
+    automation = ExtractNews(url, image_downloader, csv_writer, timestamp_to_stop, category)
 
     automation.run(search_query)

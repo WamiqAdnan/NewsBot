@@ -9,12 +9,13 @@ import re
 import extract_data_from_news_site.util as util
 
 class ExtractNews:
-    def __init__(self, url, image_downloader, csv_writer, timestamp_to_stop):
+    def __init__(self, url, image_downloader, csv_writer, timestamp_to_stop, category):
         self.browser = Selenium()
         self.url = url
         self.image_downloader = image_downloader
         self.csv_writer = csv_writer
         self.timestamp_to_stop = timestamp_to_stop
+        self.category = category
 
     def open_browser(self):
         """Open the browser and navigate to the specified URL.
@@ -275,14 +276,11 @@ class ExtractNews:
             # Wait until search submit button is visible and click
             self.wait_and_click_button(search__submit_button_locator)
 
-            # Find checkbox with this text
-            newsletter_category = "Newsletter"
-
             # Locate news category ul using CSS selector
             category_ul_locator = "css:ul[data-name='Type']"
 
             # Find and click checkbox with text Newsletter
-            self.find_and_click_checkbox_by_text(category_ul_locator, newsletter_category)
+            self.find_and_click_checkbox_by_text(category_ul_locator, self.category)
 
             # Wait until the filter is selected and page is loaded
             self.wait_until_page_contains_text("Selected Filters")
