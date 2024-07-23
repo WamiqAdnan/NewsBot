@@ -23,14 +23,11 @@ def extract_data_from_news_site():
 
     csv_path = f"{output_dir}/{search_query}_after_{util.get_formatted_date_from_timestamp_path(timestamp_to_stop / 1000)}.csv"
 
-    image_output_dir = f"{output_dir}/images/{search_query}_after_{util.get_formatted_date_from_timestamp_path(timestamp_to_stop / 1000)}"
+    image_output_dir = f"{output_dir}"
     
     # Create output directory if it does not exist
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-
-    if not os.path.exists(image_output_dir):
-        os.makedirs(image_output_dir)
 
     header = ["title", "date", "description", "picture filename", "count of search phrase", "contains amount"]
 

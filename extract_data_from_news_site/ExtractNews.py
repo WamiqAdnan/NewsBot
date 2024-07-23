@@ -224,7 +224,7 @@ class ExtractNews:
                 # Calculate count of search phrase in description and sentence
                 count = title.lower().count(search_query.lower()) + description.lower().count(search_query.lower())
 
-                file_name = f"{page}_{i+1}.{image_src.split('.')[-1]}"
+                file_name = f"{search_query}_after_{util.get_formatted_date_from_timestamp_path(self.timestamp_to_stop / 1000)}_{page}_{i+1}.{image_src.split('.')[-1]}"
 
                 image_src_paths.append((image_src, file_name))
 

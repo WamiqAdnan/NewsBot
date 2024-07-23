@@ -10,8 +10,6 @@ class ImageDownloader:
     def __init__(self, output_dir, max_workers=5):
         self.output_dir = output_dir
         self.max_workers = max_workers
-        if not os.path.exists(self.output_dir):
-            os.makedirs(self.output_dir)
 
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
     def download_image(self, url, file_name):
