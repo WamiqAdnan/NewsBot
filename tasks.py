@@ -4,20 +4,25 @@ import os
 from extract_data_from_news_site.ExtractNews import ExtractNews
 from extract_data_from_news_site.ImageDownloader import ImageDownloader
 from extract_data_from_news_site.CSVWriter import CSVWriter
+from RPA.Robocorp.WorkItems import WorkItems
 
 @task
 def extract_data_from_news_site():
+
+    # Retrieve the work item data
+    workitems =  WorkItems()
+    input_data = workitems.get_work_item_payload()
 
     # define news site URL
     url = "https://www.latimes.com/"
 
     output_dir = "output"
 
-    search_query = "Football"
+    search_query = input_data["search_query"]
 
-    category = "Newsletter"
+    category = input_data["category"]
 
-    number_of_months = 6
+    number_of_months = input_data["number_of_months"]
 
     number_of_months = 0 if number_of_months in [0, 1] else number_of_months - 1
     
