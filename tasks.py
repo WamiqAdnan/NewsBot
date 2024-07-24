@@ -6,11 +6,6 @@ from extract_data_from_news_site.ImageDownloader import ImageDownloader
 from extract_data_from_news_site.CSVWriter import CSVWriter
 
 @task
-def split_rows():
-    print("i am split")
-
-
-@task
 def extract_data_from_news_site():
 
     # define news site URL
