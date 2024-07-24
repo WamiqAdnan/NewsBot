@@ -11,6 +11,7 @@ def extract_data_from_news_site():
 
     # Retrieve the work item data
     workitems =  WorkItems()
+    workitems.get_input_work_item()
     input_data = workitems.get_work_item_payload()
 
     # define news site URL
